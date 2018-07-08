@@ -1,0 +1,100 @@
+
+body {
+  font-family: 'BrandonGrotesque-Regular';
+  background-color: #fff !important;
+  color: rgb(108, 108, 108);  
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque-Regular';
+  src: url('../fonts/Brandon_reg.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar .navbar-brand img {
+  position: relative;
+  width: 145px;
+  height: 60px;
+  margin-top: 0;
+  margin-right: 0;
+  float:left;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+#navBarHeader {
+  height: 60px;
+  background-color: rgb(33, 33, 33);
+}
+#navBarHeader {
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  border-radius: 0;
+}
+#navBarHeader img {
+  height: 35px;
+  width: auto;
+  margin-top: 12px;
+  /*margin-left: 15px;*/
+}
+
+#mainFrame {
+  padding-top: 150px;
+  padding-bottom: 200px;
+}
+
+.footer {
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgb(204, 204, 204);
+}
+.footer .copyright {
+  font-size: 15px;
+}
+.footer .footer-nav {
+  float: right !important;
+  width: auto !important;
+  margin: 0 !important;
+  list-style-type: none;
+}
+.footer .footer-nav > li {
+  float: left;
+  padding-left: 30px;
+  font-size: 15px;
+}
+.footer .footer-nav > li > a {
+  color: rgb(108, 108, 108);
+}
+
+.container-setting {
+  text-align: center;
+}
+.container-setting img {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: : 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  margin-bottom: 15px;
+}
+.container-setting p {
+  margin-top: 20px;
+}
+.container-setting .p1 {
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgb(51, 51, 51);
+}
+.container-setting .p2 {
+  font-size: 18px;
+  text-align: center;
+  color: rgb(108, 108, 108);
+}
