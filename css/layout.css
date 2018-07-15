@@ -45,6 +45,12 @@ body {
   padding-top: 150px;
   padding-bottom: 200px;
 }
+#myForm .input-group {
+  margin-bottom: 10px;
+}
+#myForm .btn-default{
+  width: 100%;
+}
 
 .footer {
   margin-top: 15px;
@@ -73,7 +79,7 @@ body {
 .container-setting {
   text-align: center;
 }
-.container-setting img {
+/* .container-setting img {
   position: relative;
   width: auto;
   height: auto;
@@ -83,7 +89,8 @@ body {
   -webkit-border-radius: 0;
   border-radius: 0;
   margin-bottom: 15px;
-}
+} */
+
 .container-setting p {
   margin-top: 20px;
 }
