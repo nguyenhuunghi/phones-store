@@ -1,4 +1,4 @@
-var host_heroku = 'https://phones-store.herokuapp.com/';
+var host_heroku = 'https://phones-store.herokuapp.com';
 var host_local = '#!'
 var html_url = host_heroku;
 
