@@ -17,5 +17,5 @@ xhttp.onreadystatechange = function() {
   }
 }
 xhttp.open("GET", phones_store_api + "phones", true);
-xhttp.send()
+xhttp.send();
 

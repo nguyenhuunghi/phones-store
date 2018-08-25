@@ -1,3 +1,4 @@
+<ng-include src="'partials/header.html'"></ng-include>
 <div class="container" id="mainFrame">
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
@@ -5,19 +6,19 @@
             <form id="myForm" class="form-signin">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon"><i class="fa fa-at" style="font-size:21px"></i></span>
-                    <input id="ip_email" type="email" name="email" class="form-control" placeholder="Your email">
+                    <input id="ip_email" type="email" name="email" class="form-control" placeholder="Your email" required>
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="password" class="form-control" name="password" placeholder="Your password">
+                    <input type="password" class="form-control" name="password" placeholder="Your password" required>
                 </div>
                 <div id="cb_remember" class="checkbox">
                     <label>
                         <input type="checkbox" onclick="click_checkbox(this)"> Remember me 
                     </label>        
-                    <span style="float: right;  cursor: pointer" onclick="func_new_account()">Create a account</span><br><br>
+                    <span style="float: right;  cursor: pointer"><a href="{{html_url}}/register">Create a account</a></span><br><br>
                 </div>
-                <input type="button" onclick="func_login()" class="btn btn-default btn-lg" value="Login">
+                <input type="button" ng-click="func_login()" class="btn btn-default btn-lg" value="Login">
             </form>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>

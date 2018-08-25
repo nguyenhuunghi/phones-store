@@ -1,16 +1,46 @@
-<script src="../js/jquery.js" type="text/javascript"></script>
-<script src="../js/register.js" type="text/javascript"></script>
-
+<ng-include src="'partials/header.html'"></ng-include>
 <div class="container" id="mainFrame">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form id="register_form">
-                <input type="email" name="email" placeholder="Your email"><br><br>
-                <input type="password" name="password" placeholder="Your password"><br><br>
-                <input type="password" name="retype_password" placeholder="Retype your password"><br><br>
-                <input type="button" onclick="sign_in()" class="btn btn-default" value="Sign in">
-                <input type="button" onclick="back_login()" class="btn btn-default" value="Back">
-            </form>
+    <form id="register_form" class="form-group center">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div id="_avatar" class="form-group" ng-click="check_image()">
+                    <div class="middle">
+                        <label class="fa fa-cloud-upload" for="avatar"></label>
+                        <input type="file" name="avatar" id="avatar" accept=".jpg, .jpeg, .png">
+                    </div>
+                    <div class="removeimage">
+                        <label class="fa fa-trash" for="rem_img"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="form-group">
+                    <label for="full_name">Full name</label>
+                    <input type="text" class="form-control" name="full_name" placeholder="Full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="re_email">Retype email</label>
+                    <br><span id="s_email" style="display: none">Your email does not map!</span>
+                    <input type="email" class="form-control" name="re_email" id="re_email" placeholder="Retype email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="pass" placeholder="Your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="re_password">Retype Password</label>
+                    <br><span id="s_pass" style="display: none">Your password does not map!</span>
+                    <input type="password" class="form-control" name="password" id="re_pass" placeholder="Retype password" required>
+                </div>
+                <div class="form-group">
+                    <span>Already have an account?<a href="{{html_url}}/login"> Sign in</a></span><br>
+                    <input type="submit" ng-click="register()" class="btn btn-default" value="Register">
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
