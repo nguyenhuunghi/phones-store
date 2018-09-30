@@ -40,6 +40,3 @@ login.controller('loginCtrl', function($scope, $rootScope, $http){
     xhttp.send();
   }
 });
-
-
-

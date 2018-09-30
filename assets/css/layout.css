@@ -160,3 +160,12 @@ body {
   text-align: center;
   color: rgb(108, 108, 108);
 }
+.progress {
+  position: absolute;
+  width: 100%;
+  top:40%;
+}
+.progress #progress_bar{
+  width: 0%;
+}
+

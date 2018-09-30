@@ -3,15 +3,15 @@ register.controller('registerCtrl', function($scope, $rootScope, $http){
   $scope.html_url = html_url;
   var check_email = false;
   var check_pass = false;
-
   $scope.check_image = function(){
     if ($("#_avatar img").length > 0){
       $("#_avatar img").remove();
       $("#avatar").val("");
       $("#_avatar .middle").show();
+      $("#_avatar").css('border', '1px solid');
+      $('.progress').hide();
     }
   }
-
   function check_email_map() {
     var email = document.getElementById("email");
     var re_email = document.getElementById("re_email");
@@ -31,7 +31,6 @@ register.controller('registerCtrl', function($scope, $rootScope, $http){
       }
     }
   }
-
   function check_pass_map() {
     var pass = document.getElementById("pass");
     var re_pass = document.getElementById("re_pass");
@@ -47,17 +46,17 @@ register.controller('registerCtrl', function($scope, $rootScope, $http){
       $("#s_pass").hide();
     }
   }
-
+  $scope.avatar = null;
   $(document).ready(function() {
     $("#_avatar").hover(function(){
-      if ($("img").length > 0){
+      if ($("#_avatar img").length > 0){
         $("#_avatar .removeimage").show();
         $("#_avatar .removeimage label").show();
       }else {
         $("#_avatar .removeimage").hide();
       }
     });
-    $("#avatar").change(function(e){
+    $("#avatar").change(function(e) {
       var curFiles = document.getElementById('avatar').files[0];
       var image = document.createElement("img");
       if (curFiles){
@@ -65,45 +64,79 @@ register.controller('registerCtrl', function($scope, $rootScope, $http){
         image.style = "width: 100px; height:100px; border-radius: 50%";
         $("#_avatar").append(image);
         $("#_avatar .middle").hide();
+        $("#_avatar").css('border', '0px solid');
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          $scope.avatar = reader.result;
+        }
+        reader.readAsDataURL(curFiles);
       }else{
         alert("Something wrong!");
       }
     });
-    $("#email").change(function(e){
+    $("#email").change(function(e) {
       check_email = check_email_map();
     });
-    $("#re_email").change(function(e){
+    $("#re_email").change(function(e) {
       check_email = check_email_map();
     });
     $("#pass").change(function(){
       check_pass = check_pass_map();
     });
-    $("#re_pass").change(function(e){
+    $("#re_pass").change(function(e) {
       check_pass = check_pass_map();
     });
   });
-
-  $scope.register = function(){
-    if (check_email == false || check_pass == false) {
-      return;
-    }
-    var curDate = new Date();
-    curDateStamp = Date.parse(curDate);
-    var register_form = new FormData(document.getElementById("register_form"));
-    // var xhttp_register_form = new XMLHttpRequest();
-    // xhttp_register_form.onreadystatechange = function() {
-    //   while(this.readyState == 4) {
-    //     if (this.status == 200) {
-    //       alert("Create a acount success!");
-    //       return;
-    //     }else {
-    //       alert(this.response);
-    //       return;
+  $scope.register = function() {
+    var file = document.getElementById('avatar').files[0];
+    // if (file) {
+    //   var width = 0;
+    //   var id = null;
+    //   $scope.progress= 0;
+    //   $('.progress').show();
+    //   var ele = document.getElementById("progress_bar");
+    //   image = { 'image': $scope.avatar }
+    //   $http({
+    //     url: local_api + 'assets',
+    //     method: 'POST',
+    //     data: image,
+    //     eventHandlers: {
+    //       progress: function(e) {
+    //         width = 100;
+    //         frame();
+    //       }
+    //     },
+    //     uploadEventHandlers: {
+    //       progress: function(e) {
+    //         id = setInterval(frame, 500);
+    //       }
+    //     }
+    //   })
+    //   function frame() {
+    //     if (width >= 100) {
+    //       ele.style.width = width + '%';
+    //       ele.innerHTML = width + '%';
+    //       clearInterval(id);
+    //     } else {
+    //       width +=5;
+    //       ele.style.width = width + '%';
+    //       ele.innerHTML = width + '%';
     //     }
     //   }
     // }
-    // xhttp_register_form.open("POST", local_api + "user", true);
-    // xhttp_register_form.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    // xhttp_register_form.send(register_form);
+    if (check_email == false || check_pass == false) return;
+    var date = new Date();
+    var form_data = {
+      'full_name': $('#full_name')[0].value,
+      'email': $('#email')[0].value,
+      'password': $('#pass')[0].value,
+    }
+    $http.post(local_api + 'user', form_data).then(function(data) {
+      if (data) {
+        alert('OK');
+      }
+    }, function(error){
+      alert(error.data.message);
+    });
   }
 });
