@@ -6,15 +6,15 @@
             <form id="myForm" class="form-signin">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon"><i class="fa fa-at" style="font-size:21px"></i></span>
-                    <input id="ip_email" type="email" name="email" class="form-control" placeholder="Your email" required>
+                    <input id="email" type="email" name="email" class="form-control" placeholder="Your email" required>
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="password" class="form-control" name="password" placeholder="Your password" required>
+                    <input type="password" id="password" class="form-control" name="password" placeholder="Your password" required>
                 </div>
                 <div id="cb_remember" class="checkbox">
                     <label>
-                        <input type="checkbox" onclick="click_checkbox(this)"> Remember me 
+                        <input id="remember" type="checkbox" ng-click="click_checkbox()"> Remember me 
                     </label>        
                     <span style="float: right;  cursor: pointer"><a href="{{html_url}}/register">Create a account</a></span><br><br>
                 </div>

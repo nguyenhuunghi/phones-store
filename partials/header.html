@@ -1,11 +1,18 @@
 <div class="navbar" id="navBarHeader">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="navbar-header">
                     <a href="#!/login"><img src="assets/img/phone_store_logo.png"></a>
                 </div>
-                <span style="color: red; float: right; margin-top: 15px;" id="name"></span>
+            </div>
+            <div ng-if="user && user.id">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="profile">
+                        <!-- <a href="{{user.assets}}" title="avatar"><img src={{user.assets}} alt="avatar"></a> -->
+                        <p ng-if="user" style="color: red">{{user.full_name}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

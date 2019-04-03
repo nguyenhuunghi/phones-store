@@ -87,53 +87,54 @@ register.controller('registerCtrl', function($scope, $rootScope, $http){
       check_pass = check_pass_map();
     });
   });
+
   $scope.register = function() {
     var file = document.getElementById('avatar').files[0];
-    // if (file) {
-    //   var width = 0;
-    //   var id = null;
-    //   $scope.progress= 0;
-    //   $('.progress').show();
-    //   var ele = document.getElementById("progress_bar");
-    //   image = { 'image': $scope.avatar }
-    //   $http({
-    //     url: local_api + 'assets',
-    //     method: 'POST',
-    //     data: image,
-    //     eventHandlers: {
-    //       progress: function(e) {
-    //         width = 100;
-    //         frame();
-    //       }
-    //     },
-    //     uploadEventHandlers: {
-    //       progress: function(e) {
-    //         id = setInterval(frame, 500);
-    //       }
-    //     }
-    //   })
-    //   function frame() {
-    //     if (width >= 100) {
-    //       ele.style.width = width + '%';
-    //       ele.innerHTML = width + '%';
-    //       clearInterval(id);
-    //     } else {
-    //       width +=5;
-    //       ele.style.width = width + '%';
-    //       ele.innerHTML = width + '%';
-    //     }
-    //   }
-    // }
+    var image_link = '';
+    if (file) {
+      var width = 0;
+      var id = null;
+      $scope.progress= 0;
+      $('.progress').show();
+      var ele = document.getElementById("progress_bar");
+      image = { 'image': $scope.avatar }
+      $http({
+        url: local_api + 'assets',
+        method: 'POST',
+        data: image,
+        eventHandlers: {
+          progress: function(e) {
+            width = 100;
+            frame();
+          }
+        },
+        uploadEventHandlers: {
+          progress: function(e) {
+            id = setInterval(frame, 1000);
+          }
+        }
+      }).then(function(data) {
+        image_link = data.data.link;
+        clearInterval(id);
+      })
+      function frame() {
+        ele.style.width = width + '%';
+        ele.innerHTML = width + '%';
+        width +=5;
+      }
+    }
     if (check_email == false || check_pass == false) return;
     var date = new Date();
     var form_data = {
       'full_name': $('#full_name')[0].value,
       'email': $('#email')[0].value,
       'password': $('#pass')[0].value,
+      'assets': image_link
     }
     $http.post(local_api + 'user', form_data).then(function(data) {
       if (data) {
         alert('OK');
+        window.location.href = html_url + 'login';
       }
     }, function(error){
       alert(error.data.message);

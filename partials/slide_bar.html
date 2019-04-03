@@ -1,0 +1,45 @@
+<ng-include src="'partials/header.html'"></ng-include>
+<div>
+    <div class="container">
+        <div id="board" ng-repeat="field in list_field">
+            <!-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                TO DO
+                <div id="todo">
+                    <ul ng-repeat="task in list_task">
+                        <p id="{{ task.id }}" ondragstart="event.dataTransfer.setData('text/plain', event.target.id)" draggable="true">{{ task.task }}</p>
+                    </ul>
+                </div>
+            </div> -->
+            {{ field.name }}
+            <div id="{{ field.id }}" class="field">
+                <ul ng-repeat="task in field.task">
+                    <p id="{{ task.id }}" ondragstart="event.dataTransfer.setData('text/plain', event.target.id)" draggable="true">{{ task.name }}</p>
+                </ul>
+            </div>
+            <button class="open">Add task</button>
+        </div>
+        <button class="add_field">Add field</button> 
+    </div>
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <input type="text" name="name_of_task" class="form-control" id="name_of_task">
+                    <input type="button" class="submit" ng-click="add_task()" value="Add task">
+                    <input type="button" class="close" value="Close">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <input type="text" name="name_of_field" class="form-control" id="name_of_field">
+                    <input type="button" class="submit" ng-click="add_field()" value="Add field">
+                    <input type="button" class="close" value="Close">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

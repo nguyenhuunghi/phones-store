@@ -39,6 +39,10 @@ body {
   margin-top: 12px;
   /*margin-left: 15px;*/
 }
+#navBarHeader .profile {
+  float: right;
+}
+
 #mainFrame {
   padding-top: 150px;
   padding-bottom: 200px;
@@ -167,5 +171,45 @@ body {
 }
 .progress #progress_bar{
   width: 0%;
+}
+
+/*slide bar menu*/
+.popup-overlay {
+  visibility:hidden;
+}
+.popup-content {
+  visibility:hidden;
+}
+
+.popup-overlay.active{
+  visibility:visible;
+}
+.popup-content.active {
+  visibility:visible;
+}
+
+#field {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+
+#todo {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+
+#board {
+  height: auto;
+  width: 350px;
+  overflow: auto;
+  float: left
+}
+
+#board .field {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
 }
 
