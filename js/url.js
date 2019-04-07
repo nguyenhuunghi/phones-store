@@ -1,10 +1,12 @@
 var app = angular.module('myApp', [
+  // 'ui-router'
   'ngRoute', 
-  'login', 
-  'register',
+  'login',
+  // 'register',
 ]);
-app.config(function($locationProvider, $routeProvider, $httpProvider) {
-  // $locationProvider.hashPrefix('!');
+app.config(function($locationProvider, $routeProvider, $httpProvider, $stateProvider) {
+  $locationProvider.hashPrefix('!');
+  $locationProvider.html5Mode(true);
   $httpProvider.defaults.headers.common["Accept"] = "application/json";
   $httpProvider.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
   $httpProvider.defaults.headers.common["Access-Control-Allow-Methods"] = "GET, POST, PATCH, PUT, DELETE, OPTIONS";
@@ -20,4 +22,20 @@ app.config(function($locationProvider, $routeProvider, $httpProvider) {
     controller: "registerCtrl"
   }).
   otherwise('/login');
+  // $stateProvider
+  //   .state('unauth', {
+  //     url: '',
+  //     abstract: true,
+  //     template: '',
+  //     resolve: {
+  //       User: function(myApi, $rootScope, $q) {
+  //         return myApi
+  //       }
+  //     }
+  //   })
+  //   .state('unauth.login', {
+  //     url: '/login',
+  //     template: '/partials/login.html',
+  //     controller: 'loginCtrl',
+  //   });
 });

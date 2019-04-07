@@ -5,7 +5,6 @@
     "license": "MIT",
     "author": "Michael",
     "scripts": {
-        "postinstall": "bower install",
         "prestart": "npm install",
         "start": "http-server"
     },
